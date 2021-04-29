@@ -1,5 +1,5 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1556911261-6bd341186b2f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
-  <div class="container-lg">
+  <div class="container">
     <div class="card" style="width: 25rem;">
       <div class="card-body">
         <h2 class="card-title">Réservez votre cuisine et des activités uniques.</h2><br>
@@ -19,11 +19,20 @@
             <label class="form-label" for="typeNumber">Prix</label>
             <input type="number" id="typeNumber" class="form-control" />
           </div><br>
-          
+
           <input type="submit" value="Rechercher" class="btn btn-primary">
+          <a href="<%= kitchens_path %>" class="btn btn-outline-primary me-2">Explorer les cuisines</a>
         </form>
       </div>
 
     </div>
   </div>
 </div>
+
+<div class="container py-5">
+  <h2 class="pb-2m" style="color: #FF6713">Pourquoi ?</h2>
+  <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</p>
+</div>
+
+
+
