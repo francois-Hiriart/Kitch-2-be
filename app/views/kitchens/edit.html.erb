@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-12 col-sm-8 col-md-4 offset-sm-2 offset-md-4">
+      <h2>Modify Your Kitchen</h2>
+  <%= simple_form_for @kitchen do |f| %>
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :location %>
+    <%= f.input :price %>
+    <%= f.input :equipments %>
+    <%= f.input :size %>
+    <%= f.input :availability %>
+    <%= f.input :description %>
+    <%= f.input :picture, as: :file %>
+  </div>
+
+  <div class="form-action">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  </div>
+<% end %>
