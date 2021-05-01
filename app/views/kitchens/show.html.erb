@@ -1,0 +1,27 @@
+<div class="container margin-top-negative">
+  <div class="row">
+    <div class="col-7">
+      <div class="kitchen-show-card">
+        <h1><%= @kitchen.name %></h1>
+      </div>
+      <div class="kitchen-show-card">
+        <p><%= @kitchen.picture %></p>
+      </div>
+      <div class="kitchen-show-card">
+        <h3>Details</h3>
+        <p>Location: <%= @kitchen.location %></p>
+        <p>Price per day: <%= @kitchen.price%></p>
+        <p>Maximum capacity: <%= @kitchen.size %> People</p>
+        <p>Description: <%= @kitchen.description %></p>
+        <button type="submit" value = "book" style="width: 30%">Book</button>
+      </div>
+    </div>
+
+    <div class="col-5">
+      <div class="kitchen-show-card">
+        <h5>Map to be added here</h5>
+        <img src="cinqueterre.jpg" class="rounded" alt="Map">
+      </div>
+    </div>
+  </div>
+</div>
