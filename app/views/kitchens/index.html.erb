@@ -6,13 +6,14 @@
 
   <% @kitchens.each do |kitchen| %>
     <div class="card m-3" style="width: 20rem;">
-      <img src="<%= kitchen.picture %>" class="card-img-top" alt="...">
+      <% if kitchen.picture.attached? %>
+      <%= cl_image_tag kitchen&.picture.key, alt: "alttext", class: "card-img-top" %>
+      <% end %>
       <div class="card-body">
         <h5 class="card-title"><%= kitchen.name %></h5>
         <p class="card-text"><%= kitchen.description %></p>
-        <a href="<%= kitchen_path(kitchen.id) %> %>" class="btn btn-primary">voir plus</a>
+        <a href="<%= kitchen_path(kitchen.id) %>" class="btn btn-primary">voir plus</a>
       </div>
     </div>
   <% end %>
-
 </div>
