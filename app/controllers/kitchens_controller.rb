@@ -1,4 +1,5 @@
 class KitchensController < ApplicationController
+
   def new
     @kitchen = Kitchen.new
   end
@@ -7,21 +8,22 @@ class KitchensController < ApplicationController
     @kitchen = Kitchen.new(kitchen_params)
 
     if @kitchen.save
-      redirect_to list_path(@kitchen)
+      redirect_to kitchen_path(@kitchen)
     else
       render :new
     end
+    raise
   end
 
   def destroy
     @kitchen.destroy
-    redirect_to kitechens_path
+    redirect_to kitchen_path
   end
 
   private
 
   def kitchen_params
-    params.require(:kitchen).permit(:name, :location, :price, :equipments, :size, :availability, :description, :picture, :user_id)
+    params.require(:kitchen).permit(:name, :location, :price, :equipments, :size, :availability, :description, :picture)
   end
 
   def set_kitchen
