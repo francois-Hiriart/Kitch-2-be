@@ -17,32 +17,38 @@ require 'faker'
 User.destroy_all
 Kitchen.destroy_all
 
-kitchen_list = ["Cuisine avec grand plan de travail", "Cuisine italienne pour pizza", "Location avec cours", "Cuisine du monde", "Grande cuisine familiale", "Cuisine de chef", "Big Bang", "KeTEE", "family kitchen", "M&J Kitchen", "Gigi", "African Kitchen", "Indian spirit", "Japanese Wok", "Barbecue"]
-city_list = ["Paris 11ème", "Saint-Denis", "Puteaux", "Paris 12ème", "paris 15ème", "Villejuif", "Saint-Mandé", "Pairs 7ème", "Paris 9ème", "Gennevilliers", "Aubervillier", "Saint-Germain-en-Laye", "Neuilly", "Levallois-Perret", "Saint-Cloud" ]
+kitchen_list = ["Cuisine avec grand plan de travail", "Cuisine italienne pour pizza", "Location avec cours", "Cuisine du monde", "Grande cuisine familiale"]
+city_list = ["Paris 11ème", "Saint-Denis", "Puteaux", "Paris 12ème", "paris 15ème" ]
 photo_list = ["https://101recycledcrafts.com/wp-content/uploads/2016/09/american-style-kitchen-decorations-9.jpg",
   "https://www.oppeinhome.com/uploads/20190408/Modern-Open-White-Lacquer-Kitchen-Cabinet-OP15-L28-north-Europe.jpg",
-   "https://www.oppeinhome.com/uploads/20190408/Modern-Open-White-Lacquer-Kitchen-Cabinet-OP15-L28-north-Europe.jpg",
     "https://www.oppeinhome.com/uploads/20190408/Shaker-Style-U-Shaped-Navy-Blue-Kitchen-OP18-L03-country-style.jpg",
     "https://media01.living4media.com/largepreviews/MzUyODg3NTA4/11383468-Open-plan-American-style-kitchen-with-black-worksurface-and-breakfast-bar-with-bar-stools.jpg",
-    "https://st.hzcdn.com/simgs/pictures/kitchens/farmers-hampton-style-kitchens-farmers-img~37c141bd05136749_14-5611-1-3980b54.jpg",
-    "https://st.hzcdn.com/simgs/pictures/kitchens/farmers-hampton-style-kitchens-farmers-img~37c141bd05136749_14-5611-1-3980b54.jpg",
-    "https://st.hzcdn.com/simgs/pictures/kitchens/farmers-hampton-style-kitchens-farmers-img~37c141bd05136749_14-5611-1-3980b54.jpg",
     "https://st.hzcdn.com/simgs/pictures/kitchens/farmers-hampton-style-kitchens-farmers-img~37c141bd05136749_14-5611-1-3980b54.jpg"]
 i = 0
 
-10.times do
-
 puts "Creating users"
-
-user = User.create!(user_name: Faker::Name.name, email: Faker::Internet.email, password: "password")
+user1 = User.create!(user_name: Faker::Name.name, email: Faker::Internet.email, password: "password")
+user2 = User.create!(user_name: "Michel Bernard", email: "test@test.com", password: "azerty")
 
 puts "Creating kitchens"
-
-kitchen = Kitchen.create!(name: kitchen_list[i], location: city_list[i], price: Faker::Number.number(digits: 2), equipments: Faker::Appliance.equipment, size: Faker::Number.number(digits: 2), availability: true, description: "Cuisine avec espace de travail. Parfait pour toute les recettes demandant beaucoup d'espace. Cette cuisine vous permet de cuisiner à 2 ou 3 maximum", picture: photo_list[i], user: user)
-i += 1
-
+photo_list.each do |photo|
+ photo = URI.open(photo)
+ kitchen = Kitchen.new(name: kitchen_list[i],
+  location: city_list[i],
+  price: Faker::Number.number(digits: 2),
+  equipments: Faker::Appliance.equipment,
+  size: Faker::Number.number(digits: 2),
+  availability: true,
+  description: "Cuisine avec espace de travail. Parfait pour toute les recettes demandant beaucoup d'espace. Cette cuisine vous permet de cuisiner à 2 ou 3 maximum",
+  user: [user1, user2].sample)
+  kitchen.picture.attach(io: photo, filename: "kitchen photo", content_type: "images/jpg")
+  kitchen.save!
+  i += 1
 end
 
-puts "Kitchens created"
+
+
+
+
 
 

@@ -5,7 +5,7 @@
         <h1><%= @kitchen.name %></h1>
       </div>
       <div class="kitchen-show-card">
-        <p><%= @kitchen.picture %></p>
+        <p><%= cl_image_tag @kitchen&.picture.key, alt: "alttext" %></p>
       </div>
       <div class="kitchen-show-card">
         <h3>Details</h3>
