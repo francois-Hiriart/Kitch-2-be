@@ -22,8 +22,7 @@ city_list = ["Paris 11ème", "Saint-Denis", "Puteaux", "Paris 12ème", "paris 15
 photo_list = ["https://101recycledcrafts.com/wp-content/uploads/2016/09/american-style-kitchen-decorations-9.jpg",
   "https://www.oppeinhome.com/uploads/20190408/Modern-Open-White-Lacquer-Kitchen-Cabinet-OP15-L28-north-Europe.jpg",
     "https://www.oppeinhome.com/uploads/20190408/Shaker-Style-U-Shaped-Navy-Blue-Kitchen-OP18-L03-country-style.jpg",
-    "https://media01.living4media.com/largepreviews/MzUyODg3NTA4/11383468-Open-plan-American-style-kitchen-with-black-worksurface-and-breakfast-bar-with-bar-stools.jpg",
-    "https://st.hzcdn.com/simgs/pictures/kitchens/farmers-hampton-style-kitchens-farmers-img~37c141bd05136749_14-5611-1-3980b54.jpg"]
+    "https://media01.living4media.com/largepreviews/MzUyODg3NTA4/11383468-Open-plan-American-style-kitchen-with-black-worksurface-and-breakfast-bar-with-bar-stools.jpg"]
 i = 0
 
 puts "Creating users"
