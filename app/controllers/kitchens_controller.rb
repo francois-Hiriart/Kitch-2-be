@@ -1,5 +1,13 @@
 class KitchensController < ApplicationController
-
+  
+  def index
+    @kitchens = Kitchen.all
+  end
+  
+  def show
+    @kitchen = Kitchen.find(params[:id])
+  end
+  
   def new
     @kitchen = Kitchen.new
   end
@@ -14,6 +22,15 @@ class KitchensController < ApplicationController
     end
     raise
   end
+
+  def edit
+    @kitchen = Kitchen.find(params[:id])
+  end
+
+  def update
+    @kitchen = Kitchen.find(params[:id])
+    @kitchen.update(kitchen_params)
+    redirect_to kitchen_path(@kitchen)
 
   def destroy
     @kitchen.destroy
