@@ -1,11 +1,18 @@
 class KitchensController < ApplicationController
-before_action :authenticate_user!
   def index
     @kitchens = Kitchen.all
   end
 
   def show
     @kitchen = Kitchen.find(params[:id])
+    @booking = Booking.new
+    @bookings = @kitchen.bookings
+    @bookings_dates = @bookings.map do |booking|
+      {
+        from: booking.start_date,
+        to: booking.end_date
+      }
+    end
   end
 
   def new
@@ -39,6 +46,10 @@ before_action :authenticate_user!
     redirect_to kitchens_path
   end
 
+   def my_kitchen
+    @kitchens = current_user.kitchens
+  end
+
   private
 
   def kitchen_params
@@ -48,4 +59,6 @@ before_action :authenticate_user!
   def set_kitchen
     kitchen = Kitchen.find(params[:id])
   end
+
 end
+
