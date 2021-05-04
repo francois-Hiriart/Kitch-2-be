@@ -13,7 +13,6 @@
         <p>Price per day: <%= @kitchen.price%></p>
         <p>Maximum capacity: <%= @kitchen.size %> People</p>
         <p>Description: <%= @kitchen.description %></p>
-        <button type="submit" value = "book" style="width: 30%">Book</button>
       </div>
     </div>
 
@@ -29,8 +28,12 @@
                 data: { confirm: "Are you sure?" },
                 class: 'ml-3 text-danger'
             %>
+        </div>
+
+        <div class="flat-card-actions">
+              <%= render 'bookings/form', booking: @booking, kitchen: @kitchen, text: "Réserver" %>
              <%= link_to "back to the list", kitchens_path %>
-          </div>
+        </div>
     </div>
   </div>
 </div>
