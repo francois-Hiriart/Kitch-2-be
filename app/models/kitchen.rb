@@ -8,11 +8,16 @@ class Kitchen < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
 
-  def is_available?(start_date, end_date)
-    bookings.each do |b|
-      return false if (b.start_date..b.end_date).overlaps?(start_date.to_date..end_date.to_date)
+  def is_booked?(start_date, end_date)
+    bookings.any? do |b|
+      (b.start_date..b.end_date).overlaps?(start_date.to_date..end_date.to_date)
     end
-    return true
   end
 
+ # include PgSearch::Model
+ #  pg_search_scope :search_by_location,
+ #    against: [:location],
+ #    using: {
+ #      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+ #    }
 end

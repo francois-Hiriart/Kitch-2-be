@@ -1,20 +1,35 @@
-<div class="container">
-  <div class="row mt-5">
-    <div class="col-12 col-sm-8 col-md-4 offset-sm-2 offset-md-4">
-      <h2>Modify Your Kitchen</h2>
-  <%= simple_form_for @kitchen do |f| %>
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :location %>
-    <%= f.input :price %>
-    <%= f.input :equipments %>
-    <%= f.input :size %>
-    <%= f.input :availability %>
-    <%= f.input :description %>
-    <%= f.input :picture, as: :file %>
-  </div>
+<div class="container pt-4 d-flex justify-content-center">
+  <div class="card p-3 justify-content-center" style="width: 50rem;">
+    <div class="card-body">
+      <h2 style="color: #FF6713"><center>Modifier la Kitchen</center></h2>
 
-  <div class="form-action">
-    <%= f.button :submit, class: 'btn btn-primary' %>
+      <%= simple_form_for @kitchen do |f| %>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :name, label:'Nom' %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :location, label:'Adresse'%>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :equipments, label:'Liste des équipements' %>
+        </div>
+        <div class="col-md-3">
+          <%= f.input :price, label:'Prix en €' %>
+        </div>
+        <div class="col-md-3">
+          <%= f.input :size, label:'Superficie en m²' %>
+        </div>
+      </div>
+        <%= f.input :availability, label:'Cochez si Kitchen disponible' %>
+        <%= f.input :description %>
+        <%= f.input :picture, as: :file, class: "btn btn-outline-primary me-2", label:'Insérer les photos' %>
+        <%= f.button :submit, 'Modifier', class: 'btn btn-primary' %>
+      <% end %>
+
+    </div>
   </div>
-<% end %>
+</div>
