@@ -18,8 +18,11 @@
 
     <div class="col-5">
       <div class="kitchen-show-card">
-        <h5>Map to be added here</h5>
-        <img src="cinqueterre.jpg" class="rounded" alt="Map">
+        <div id="map"
+          style="width: 100%; height: 600px;"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
       </div>
         <div class="flat-card-actions">
             <%= link_to 'Edit', edit_kitchen_path(@kitchen), class: 'ml-3 text-warning' %>

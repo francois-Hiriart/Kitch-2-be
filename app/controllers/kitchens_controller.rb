@@ -1,6 +1,16 @@
 class KitchensController < ApplicationController
   def index
     @kitchens = Kitchen.all
+
+    # the `geocoded` scope filters
+    # only flats with coordinates (latitude & longitude)
+    @markers = @kitchens.geocoded.map do |kitchen|
+      {
+        lat: kitchen.latitude,
+        lng: kitchen.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { kitchen: kitchen })
+      }
+    end
   end
 
   def show
@@ -13,6 +23,11 @@ class KitchensController < ApplicationController
         to: booking.end_date
       }
     end
+    @markers = [{
+        lat: @kitchen.latitude,
+        lng: @kitchen.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { kitchen: @kitchen })
+      }]
   end
 
   def new
