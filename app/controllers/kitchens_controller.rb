@@ -3,6 +3,16 @@ class KitchensController < ApplicationController
 
   def index
     @kitchens = Kitchen.all
+
+    # the `geocoded` scope filters
+    # only flats with coordinates (latitude & longitude)
+    @markers = @kitchens.geocoded.map do |kitchen|
+      {
+        lat: kitchen.latitude,
+        lng: kitchen.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { kitchen: kitchen })
+      }
+
     if params[:kitchens_filter].present?
       if params[:kitchens_filter][:location].present?
         @kitchens = @kitchens.where("location ILIKE ?", "%#{params[:kitchens_filter][:location]}%")
@@ -18,6 +28,7 @@ class KitchensController < ApplicationController
         session[:start_date] = params[:kitchens_filter][:start_date]
         session[:end_date] = params[:kitchens_filter][:end_date]
       end
+
     end
   end
 
@@ -31,6 +42,11 @@ class KitchensController < ApplicationController
         to: booking.end_date
       }
     end
+    @markers = [{
+        lat: @kitchen.latitude,
+        lng: @kitchen.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { kitchen: @kitchen })
+      }]
   end
 
   def new

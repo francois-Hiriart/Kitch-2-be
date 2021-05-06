@@ -63,5 +63,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'cloudinary', '~> 1.16.0'
 gem 'devise'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
+
+gem 'geocoder'
+
+gem 'dotenv-rails', groups: [:development, :test]
+
 gem 'pundit'
 gem 'pg_search', '~> 2.3.0'
