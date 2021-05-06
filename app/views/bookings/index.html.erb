@@ -23,10 +23,12 @@
                 <%= link_to booking_path(booking.id) do %>
                   <button class="btn btn-principal btn-margin-top">Voir</button>
                 <% end %>
-                <%= link_to booking_path(booking),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } do %>
-                  <button class="btn btn-principal btn-margin-top">Annuler</button>
+                <% if policy(booking).destroy? %>
+                  <%= link_to booking_path(booking),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } do %>
+                    <button class="btn btn-principal btn-margin-top">Annuler</button>
+                  <% end %>
                 <% end %>
               </div>
             </div>

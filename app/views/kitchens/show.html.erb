@@ -10,7 +10,7 @@
       <div class="kitchen-show-card">
         <h3>Details</h3>
         <p>Location: <%= @kitchen.location %></p>
-        <p>Price per day: <%= @kitchen.price%></p>
+        <p>Price per day: <%= @kitchen.price%>€</p>
         <p>Maximum capacity: <%= @kitchen.size %> People</p>
         <p>Description: <%= @kitchen.description %></p>
       </div>
@@ -22,17 +22,19 @@
         <img src="cinqueterre.jpg" class="rounded" alt="Map">
       </div>
         <div class="flat-card-actions">
+          <% if policy(@kitchen).edit? %>
             <%= link_to 'Edit', edit_kitchen_path(@kitchen), class: 'ml-3 text-warning' %>
             <%= link_to "Remove", kitchen_path(@kitchen),
                 method: :delete,
                 data: { confirm: "Are you sure?" },
                 class: 'ml-3 text-danger'
             %>
+            <% end %>
         </div>
 
         <div class="flat-card-actions">
-              <%= render 'bookings/form', booking: @booking, kitchen: @kitchen, text: "Réserver" %>
-             <%= link_to "back to the list", kitchens_path %>
+          <%= render 'bookings/form', booking: @booking, kitchen: @kitchen, text: "Réserver" %>
+          <%= link_to "back to the list", kitchens_path %>
         </div>
     </div>
   </div>

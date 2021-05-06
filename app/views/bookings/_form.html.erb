@@ -3,8 +3,21 @@
 
     <h1>Validez votre réservation</h1>
     <%= simple_form_for [kitchen, booking] do |f| %>
-      <%= f.input :start_date, as: :string, label: "Dates", placeholder: "From", wrapper_html: { class: "inline_field_wrapper" } %>
-      <%= f.input :end_date, as: :string, label: "Dates", placeholder: "To", wrapper_html: { class: "inline_field_wrapper" } %>
+      <%= f.error_notification %>
+      <%= f.input :start_date,
+        as: :string,
+        label: "Dates",
+        placeholder: "From",
+        wrapper_html: { class: "inline_field_wrapper" },
+        input_html: { value: session[:start_date] }
+      %>
+      <%= f.input :end_date,
+        as: :string,
+        label: "Dates",
+        placeholder: "To",
+        wrapper_html: { class: "inline_field_wrapper" },
+        input_html: { value: session[:end_date] }
+      %>
       <p>Réservation pour <span id="total-days">0</span> journées</p>
       <p>Prix total : <span class="font-weight-bold"><span id="total-price">0</span> €</span></p>
       <%= f.submit "réserver", class: "btn btn-primary" %>

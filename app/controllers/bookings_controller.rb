@@ -9,11 +9,18 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params.merge(user: current_user))
     @booking.kitchen = @kitchen
-
-    if @booking.save!
+    if !@kitchen.is_booked?(@booking.start_date, @booking.end_date) && @booking.save!
       redirect_to bookings_path
     else
-      render :new
+      @booking.errors.add(:start_date, "ne sont plus disponibles.")
+      render 'kitchens/show'
+      @bookings = @kitchen.bookings
+      @bookings_dates = @bookings.map do |booking|
+        {
+          from: booking.start_date,
+          to: booking.end_date
+        }
+      end
     end
   end
 
@@ -22,7 +29,6 @@ class BookingsController < ApplicationController
     @total_days = @booking.total_days
     @total_price = @booking.total_price
   end
-
 
   def destroy
     @booking = Booking.find(params[:id])
@@ -36,12 +42,13 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:start_date, :end_date)
   end
 
-    def set_kitchen
+  def set_kitchen
     @kitchen = Kitchen.find(params[:kitchen_id])
+    authorize @kitchen
   end
 
   def set_booking
     @booking = Booking.find(params[:id])
+    authorize @booking
   end
-
 end
