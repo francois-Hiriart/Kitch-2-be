@@ -9,6 +9,7 @@
     </div>
 
 
+  <% if @booking.user == current_user %>
     <div class="book-content">
       <div class="book-info">
         <h3><%= @kitchen.location %></h3>
@@ -27,3 +28,5 @@
     </div>
   </div>
 </div>
+<% else "Vous n'avez pas de réservation en cours" %>
+<% end %>

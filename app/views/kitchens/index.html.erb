@@ -4,6 +4,10 @@
 
 <div class="container lg d-flex align-content-start flex-wrap" id="custom-cards">
 
+  <% if policy(Kitchen).create? %>
+    <h3><%= link_to "Nouvelle cuisine", new_kitchen_path %></h3>
+  <% end %>
+
   <% @kitchens.each do |kitchen| %>
     <div class="card m-3" style="width: 20rem;">
       <% if kitchen.picture.attached? %>
@@ -12,8 +16,10 @@
       <div class="card-body">
         <h5 class="card-title"><%= kitchen.name %></h5>
         <p class="card-text"><%= kitchen.description %></p>
-        <a href="<%= kitchen_path(kitchen.id) %>" class="btn btn-primary">voir plus</a>
+        <a href="<%= kitchen_path(kitchen) %>" class="btn btn-primary">voir plus</a>
       </div>
     </div>
   <% end %>
 </div>
+
+
