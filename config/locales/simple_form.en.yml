@@ -9,8 +9,7 @@ en:
       # When using html, text and mark won't be used.
       # html: '<abbr title="required">*</abbr>'
     error_notification:
-      default_message: "Désolé, nous n'avons pas pu sauvegarder votre réservation !"
-
+      default_message: "Oups, un problème :"
     # Examples
     # labels:
     #   defaults:
