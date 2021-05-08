@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
       @review.booking = @booking
 
     if @review.save!
-      redirect_to booking_reviews_path
+      redirect_to kitchens_path(@kitchen)
     else
       render :new
     end

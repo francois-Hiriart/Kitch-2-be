@@ -41,11 +41,11 @@ class KitchensController < ApplicationController
         to: booking.end_date
       }
     end
-    # @markers = [{
-    #     lat: @kitchen.latitude,
-    #     lng: @kitchen.longitude,
-    #     infoWindow: render_to_string(partial: "info_window", locals: { kitchen: @kitchen })
-    #   }]
+    @markers = [{
+        lat: @kitchen.latitude,
+        lng: @kitchen.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { kitchen: @kitchen })
+      }]
 
     @reviews = @kitchen.reviews
   end
