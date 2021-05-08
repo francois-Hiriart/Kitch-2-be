@@ -30,3 +30,8 @@
 </div>
 <% else "Vous n'avez pas de réservation en cours" %>
 <% end %>
+
+ <div class="flat-card-actions">
+   <%= render 'reviews/form', review: @review, kitchen: @booking, text: "laisser un commentaire" %>
+ </div>
+
