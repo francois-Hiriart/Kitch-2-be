@@ -17,7 +17,8 @@
           <li>
             <a href="<% kitchens_path %>" class="nav-link" aria-current="page">
               <i class="fas fa-key"></i><use xlink:href="#table"/>
-              Mes kitchens à louer
+              Mes kitchens
+              <%= render 'kitchens/mykitchens', kitchen: @kitchen %>
             </a>
           </li>
           <li>
