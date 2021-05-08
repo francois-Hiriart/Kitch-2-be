@@ -37,7 +37,7 @@
         <div class="card mb-3">
           <div class="card-body">
             <h2 style="color: #FF6713"><b>Ma réservation</b></h2>
-          </div>
+          </div>   
         </div>
 
         <div class="card mb-5">
@@ -74,8 +74,7 @@
          <div class="flat-card-actions">
             <%= render 'reviews/form', review: @review, kitchen: @booking, text: "laisser un commentaire" %>
           </div>
-
- <% if @kitchens.user == current_user %>
+            <% @kitchens.user == current_user %>
 
               <% @kitchens.each do |kitchen| %>
 

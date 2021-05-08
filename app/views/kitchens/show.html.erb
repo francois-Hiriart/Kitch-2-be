@@ -45,3 +45,11 @@
     </div>
   </div>
 </div>
+
+  <div class="cards-grid-3">
+      <% @reviews&.each do |review| %>
+        <div class="card-flat">
+            <div class="card-flat-image">
+            </div>
+            <h5><%= review.comment %></h5>
+      <% end %>

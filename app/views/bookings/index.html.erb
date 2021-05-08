@@ -36,7 +36,7 @@
         <div class="card">
           <div class="card-body">
             <h2 style="color: #FF6713"><b>Mes réservations</b></h2>
-          </div>
+          </div>   
         </div>
         <div class="container lg d-flex align-content-start flex-wrap">
           <div class="cards-grid-3 pt-3">
@@ -48,9 +48,8 @@
               <% end %>
 
             <% else %>
-
+              
               <% @bookings.each do |booking| %>
-
                 <div class="card m-3" style="width: 20rem;">
                   <%= link_to booking_path(booking.id) do %>
                     <div class="card-flat-image">
@@ -68,7 +67,7 @@
                           data: { confirm: "Are you sure?" } do %>
                           <button class="btn btn-danger">Annuler</button>
                         <% end %>
-                      <% end %>
+                      <% end %> 
                     </div>
                   <% end %>
                 </div>
@@ -81,15 +80,3 @@
     </main>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
