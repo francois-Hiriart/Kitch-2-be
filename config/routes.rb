@@ -6,13 +6,14 @@ Rails.application.routes.draw do
     resources :users
     resources :kitchens
     resources :bookings
+    resources :reviews
 
   resources :bookings, only: [:index, :show, :destroy]
   resources :kitchens do
     resources :bookings, only: [:new, :create]
   end
 
-  resources :users do
-    resources :messages, only: [:index, :create]
+  resources :bookings do
+    resources :reviews
   end
 end
