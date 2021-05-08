@@ -1,41 +1,85 @@
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-3">
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a href="<% bookings_path %>" class="nav-link active" aria-current="page">
+              Mon espace personnel
+            </a>
+          </li>
+          <li>
+            <a href="<% bookings_path %>" class="nav-link" aria-current="page">
+              <i class="fas fa-calendar-alt"></i><use xlink:href="#speedometer2"/>
+              Mes réservations
+            </a>
+          </li>
+          <li>
+            <a href="<% bookings_path %>" class="nav-link" aria-current="page">
+              <i class="fas fa-key"></i><use xlink:href="#table"/>
+              Mes kitchens à louer
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link link-dark">
+              <i class="fas fa-info-circle"></i><use xlink:href="#grid"/></svg>
+              Mes informations
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-<div class="pages-container margin-nav">
-  <h3>Mes réservations</h3>
-  <div class="cards-grid-3">
-    <% if @bookings.empty? %>
-      <p>Pas de réservations</p>
-      <%= link_to kitchens_path do %>
-        <button class="btn btn-principal">Chercher une cuisine</button>
-      <% end %>
-    <% else %>
-      <% @bookings.each do |booking| %>
-        <div class="card-flat">
-          <%= link_to booking_path(booking.id) do %>
-            <div class="card-flat-image">
-            </div>
-            <h5><%= booking.kitchen.location %></h5>
-            <div class="card-flat-content">
-              <div class="card-flat-date">
-                <p>Du <%= booking.start_date.strftime('%e/%m/%Y')%></p>
-                <p>au <%= booking.end_date.strftime('%e/%m/%Y')%></p>
-              </div>
-              <div>
-                <%= link_to booking_path(booking.id) do %>
-                  <button class="btn btn-principal btn-margin-top">Voir</button>
-                <% end %>
-                <% if policy(booking).destroy? %>
-                  <%= link_to booking_path(booking),
-                    method: :delete,
-                    data: { confirm: "Are you sure?" } do %>
-                    <button class="btn btn-principal btn-margin-top">Annuler</button>
-                  <% end %>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-warning pt-3">
+
+      <div class="container pages-container margin-nav">
+        <div class="card">
+          <div class="card-body">
+            <h2 style="color: #FF6713"><b>Mes réservations</b></h2>
+          </div>   
         </div>
-      <% end %>
-    <% end %>
+        <div class="container lg d-flex align-content-start flex-wrap">
+          <div class="cards-grid-3 pt-3">
+
+            <% if @bookings.empty? %>
+              <p>Pas de réservations</p>
+              <%= link_to kitchens_path do %>
+                <button class="btn btn-primary">Chercher une cuisine</button>
+              <% end %>
+
+            <% else %>
+              
+              <% @bookings.each do |booking| %>
+              
+                <div class="card m-3" style="width: 20rem;">
+                  <%= link_to booking_path(booking.id) do %>
+                    <div class="card-flat-image">
+                    </div>
+                    <div class="card-body">
+                      <h5><%= booking.kitchen.location %></h5>
+                      <p>Du <%= booking.start_date.strftime('%e/%m/%Y')%></p>
+                      <p>au <%= booking.end_date.strftime('%e/%m/%Y')%></p>
+                      <%= link_to booking_path(booking.id) do %>
+                        <button class="btn btn-primary">Voir</button>
+                      <% end %>
+                      <% if policy(booking).destroy? %>
+                        <%= link_to booking_path(booking),
+                          method: :delete,
+                          data: { confirm: "Are you sure?" } do %>
+                          <button class="btn btn-danger">Annuler</button>
+                        <% end %>
+                      <% end %> 
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </main>
   </div>
 </div>
+
+
 

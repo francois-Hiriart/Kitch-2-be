@@ -28,6 +28,11 @@ class BookingsController < ApplicationController
     @kitchen = @booking.kitchen
     @total_days = @booking.total_days
     @total_price = @booking.total_price
+
+    @review = Review.new
+    @reviews = @booking.review
+    authorize @review
+
   end
 
   def destroy

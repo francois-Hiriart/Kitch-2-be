@@ -1,0 +1,10 @@
+
+<h1>New review</h1>
+
+  <%= simple_form_for [@booking, @review] do |f| %>
+    <%= f.input :comment %>
+    <%= f.button :submit %>
+    <%= link_to "Voir les commentaires", reviews_path(@review), class: "btn btn-outline-primary me-2" %>
+<% end %>
+
+<%= link_to "back to kitchens", kitchens_path %>
