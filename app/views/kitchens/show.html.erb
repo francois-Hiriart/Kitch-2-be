@@ -18,7 +18,7 @@
   </div>
 
   <div class="row">
-    <div class="col-8">
+    <div class="col-8 card p-5">
       <h3 style="color: #FF6713">Détails</h3>
       <p><%= @kitchen.description %></p>
       <p><i class="fas fa-ruler-combined"></i> <%= @kitchen.location %></p>
@@ -45,3 +45,11 @@
     </div>
   </div>
 </div>
+
+  <div class="cards-grid-3">
+      <% @reviews&.each do |review| %>
+        <div class="card-flat">
+            <div class="card-flat-image">
+            </div>
+            <h5><%= review.comment %></h5>
+      <% end %>

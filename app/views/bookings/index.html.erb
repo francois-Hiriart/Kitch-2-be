@@ -15,9 +15,9 @@
             </a>
           </li>
           <li>
-            <a href="<% bookings_path %>" class="nav-link" aria-current="page">
+            <a href="<%= bookings_path(kitchens_filter:"mykitchens")%>" class="nav-link" aria-current="page">
               <i class="fas fa-key"></i><use xlink:href="#table"/>
-              <%= link_to "Mes kitchens à louer", bookings_path(kitchens_filter:"mykitchens") %>
+              Mes kitchens à louer
             </a>
           </li>
           <li>
@@ -50,7 +50,6 @@
             <% else %>
 
               <% @bookings.each do |booking| %>
-
                 <div class="card m-3" style="width: 20rem;">
                   <%= link_to booking_path(booking.id) do %>
                     <div class="card-flat-image">
@@ -81,15 +80,3 @@
     </main>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
