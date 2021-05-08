@@ -74,24 +74,6 @@
          <div class="flat-card-actions">
             <%= render 'reviews/form', review: @review, kitchen: @booking, text: "laisser un commentaire" %>
           </div>
-            <% @kitchens.user == current_user %>
-
-              <% @kitchens.each do |kitchen| %>
-
-                    <div class="card-body">
-                      <h5><%= kitchen.name %></h5>
-                      <%= link_to kitchens_path(kitchen.id) do %>
-                        <button class="btn btn-primary">Voir</button>
-                      <% end %>
-                       <% else %>
-                        <p>Pas de cusine en location</p>
-                    </div>
-                  <% end %>
-                </div>
-              <% end %>
-          </div>
-
-          </div>
         </div>
       </div>
     </main>
