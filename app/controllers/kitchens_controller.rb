@@ -58,6 +58,7 @@ class KitchensController < ApplicationController
   def create
     @kitchen = Kitchen.new(kitchen_params)
     @kitchen.user = current_user
+    authorize @kitchen
 
     if @kitchen.save
       redirect_to kitchen_path(@kitchen)
@@ -77,10 +78,6 @@ class KitchensController < ApplicationController
   def destroy
     @kitchen.destroy
     redirect_to kitchens_path
-  end
-
-  def my_kitchen
-    @kitchens = current_user.kitchens
   end
 
   private
