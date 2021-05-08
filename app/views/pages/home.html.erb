@@ -1,63 +1,116 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1556911261-6bd341186b2f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
-  <div class="container">
-    <div class="card" style="width: 25rem;">
+  <h1 class="card-title p-2 text-center" style="color: white"><b>Réservez votre cuisine et des activités uniques</h2></b><br>
+  <div class="container justify-content-center">
+    <div class="card">
       <div class="card-body">
-        <h2 class="card-title">Réservez votre cuisine et des activités uniques.</h2><br>
 
-        <!-- <form action="#">
-          <div class="form-group">
-            <label for="inputAddress" class="form-label">Localisation</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="ville">
-          </div> -->
+          <%= simple_form_for :kitchens_filter, url: kitchens_path, method: "GET" do |f| %>
+            <div class="row">
+              <div class="col-md-3">
+                <%= f.input :location, label: false,
+                                        input_html: { placeholder: "Localisation" } %>
+              </div>
+              <div class="col-md-2">
+                <%= f.input :start_date, label: false, html5: true,
+                                        input_html: { type: :date } %>
+              </div>
 
-          <%= simple_form_for :kitchens_filter, url: kitchens_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-            <%= f.input :location, label: false,
-                                 input_html: { placeholder: "lieu" } %>
+              <div class="col-md-2">
+                <%= f.input :end_date, label: false, html5: true,
+                                        input_html: { type: :date } %>
+              </div>
+              <div class="col-md-2">
+                <%= f.input :min_price, label: false,
+                                        input_html: { type: :number,
+                                                      min: "0",
+                                                      placeholder: "Prix min" } %>
+              </div>
+              <div class="col-md-2">
+                <%= f.input :max_price, label: false,
+                                        input_html: { type: :number,
+                                                      min: "0",
+                                                      placeholder: "Prix max" } %>
+              </div>
+              <div class="col-md-1">
+                <%= button_tag(type: "submit", class: "btn btn-primary") do %>
+                  <span><i class="fas fa-search"></i></span>
+                <% end %>
+              </div>
 
-            <%= f.input :min_price, label: false,
-                                     input_html: { type: :number,
-                                                   min: "0",
-                                                   placeholder: "prix minimum" } %>
-            <%= f.input :max_price, label: false,
-                                     input_html: { type: :number,
-                                                   min: "0",
-                                                   placeholder: "prix maximum" } %>
+            </div>
+          <% end %>
 
-            <%= f.input :start_date, label: false, html5: true,
-                                     input_html: { type: :date } %>
-
-            <%= f.input :end_date, label: false, html5: true,
-                                     input_html: { type: :date } %>
-
-
-              <%= f.submit "Recherche", class:  "btn btn-principal mt-0" %>
-            <% end %>
-
-         <!--  <div class="form-group">
-            <label for="example-date-input" class="form-label">Date de début</label>
-            <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-            <label for="example-date-input" class="form-label">Date de fin</label>
-            <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="typeNumber">Prix</label>
-            <input type="number" id="typeNumber" class="form-control" />
-          </div><br> -->
-
-          <input type="submit" value="Rechercher" class="btn btn-primary">
-          <a href="<%= kitchens_path %>" class="btn btn-outline-primary me-2">Explorer les cuisines</a>
-        </form>
       </div>
 
     </div>
   </div>
 </div>
 
-<div class="container py-5">
-  <h2 class="pb-2m" style="color: #FF6713">Pourquoi ?</h2>
-  <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.</p>
+<div class="container py-5 text-center" style="bg-color">
+  <h2 class="pb-2m" style="color: #FF6713"><b>Explorez Kitch2be</b></h2>
+  <p class="display-6">Voici les fonctionnalités et avantages que nous proposons à ceux d'entre vous qui veulent tenter Kitch2be</p>
 </div>
 
+<div class="container">
 
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="card m-2 bg-warning border-0 shadow-sm p-3 mb-5 bg-body rounded" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4 ">
+          <%= image_tag "Booking.png", alt: "Kitch2be", class: "img-fluid rounded position-absolute top-50 start-50 translate-middle"%>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title" style="color: #FF6713"><b>Booker son moment cuisine</b></h5>
+            <p class="card-text">Selectionnez le moment qui vous convient et organisez vous avec votre hôte de cuisine.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card m-2 bg-warning border-0 shadow-sm p-3 mb-5 bg-body rounded" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <%= image_tag "cooking.png", alt: "Kitch2be", class: "img-fluid rounded position-absolute top-50 start-50 translate-middle"%>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title" style="color: #FF6713"><b>Apprenez à cuisiner</b></h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card m-2 bg-warning border-0 shadow-sm p-3 mb-5 bg-body rounded" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <%= image_tag "having_fun.png", alt: "Kitch2be", class: "img-fluid rounded position-absolute top-50 start-50 translate-middle"%>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title" style="color: #FF6713"><b>Créer de nouvelles rencontres</b></h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card m-2 bg-warning border-0 shadow-sm p-3 mb-5 bg-body rounded" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <%= image_tag "economy.png", alt: "Kitch2be", class: "img-fluid rounded position-absolute top-50 start-50 translate-middle"%>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title" style="color: #FF6713"><b>Faites des economies</b></h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
 
