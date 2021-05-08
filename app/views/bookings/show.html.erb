@@ -15,9 +15,16 @@
             </a>
           </li>
           <li>
+<<<<<<< HEAD
             <a href="<% bookings_path %>" class="nav-link" aria-current="page">
               <i class="fas fa-key"></i><use xlink:href="#table"/>
               Mes kitchens à louer
+=======
+            <a href="<% kitchens_path %>" class="nav-link" aria-current="page">
+              <i class="fas fa-key"></i><use xlink:href="#table"/>
+              Mes kitchens à louer
+              <%= render 'kitchens/mykitchens', kitchen: @kitchen %>
+>>>>>>> master
             </a>
           </li>
           <li>
@@ -36,7 +43,11 @@
         <div class="card mb-3">
           <div class="card-body">
             <h2 style="color: #FF6713"><b>Ma réservation</b></h2>
+<<<<<<< HEAD
           </div>   
+=======
+          </div>
+>>>>>>> master
         </div>
 
         <div class="card mb-5">
@@ -74,8 +85,29 @@
             <%= render 'reviews/form', review: @review, kitchen: @booking, text: "laisser un commentaire" %>
           </div>
 
+<<<<<<< HEAD
 
           </div>   
+=======
+ <% if @kitchens.user == current_user %>
+
+              <% @kitchens.each do |kitchen| %>
+
+                    <div class="card-body">
+                      <h5><%= kitchen.name %></h5>
+                      <%= link_to kitchens_path(kitchen.id) do %>
+                        <button class="btn btn-primary">Voir</button>
+                      <% end %>
+                       <% else %>
+                        <p>Pas de cusine en location</p>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+          </div>
+
+          </div>
+>>>>>>> master
         </div>
       </div>
     </main>

@@ -4,7 +4,10 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = current_user.bookings
-  end
+     if params[:kitchens_filter] == "mykitchens"
+      @user_kitchens = current_user.kitchens
+     end
+ end
 
   def create
     @booking = Booking.new(booking_params.merge(user: current_user))

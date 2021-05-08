@@ -1,0 +1,15 @@
+
+  <div class="card-body">
+    <% if @user_kitchens.present? %>
+      <% @user_kitchens.each do |kitchen| %>
+        <div class="card-flat-image">
+        </div>
+        <div class="card-body">
+          <h5><%= kitchen.name %></h5>
+          <%= link_to kitchen_path(kitchen.id) do %>
+            <button class="btn btn-primary">Voir</button>
+          <% end %>
+      <% end %>
+  </div>
+  <% end %>
+  </div>
