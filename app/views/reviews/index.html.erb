@@ -1,0 +1,17 @@
+<div class="pages-container margin-nav">
+  <h3>Commentaires</h3>
+  <div class="cards-grid-3">
+    <% if @reviews.empty? %>
+      <p>Pas de commentaires</p>
+      <%= link_to kitchens_path do %>
+      <% end %>
+    <% else %>
+      <% @reviews.each do |review| %>
+        <div class="card-flat">
+          <%= link_to review_path(review.id) do %>
+            <div class="card-flat-image">
+            </div>
+            <h5><%= review.comment %></h5>
+           <% end %>
+      <% end %>
+    <% end %>

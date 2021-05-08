@@ -21,7 +21,8 @@ class KitchensController < ApplicationController
       end
     end
 
-    @markers = @kitchens.geocoded.map do |kitchen|
+    @markers = @kitchens.map do |kitchen|
+        kitchen.geocode
       {
         lat: kitchen.latitude,
         lng: kitchen.longitude,
@@ -40,11 +41,13 @@ class KitchensController < ApplicationController
         to: booking.end_date
       }
     end
-    @markers = [{
-        lat: @kitchen.latitude,
-        lng: @kitchen.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { kitchen: @kitchen })
-      }]
+    # @markers = [{
+    #     lat: @kitchen.latitude,
+    #     lng: @kitchen.longitude,
+    #     infoWindow: render_to_string(partial: "info_window", locals: { kitchen: @kitchen })
+    #   }]
+
+    @reviews = @kitchen.reviews
   end
 
   def new
