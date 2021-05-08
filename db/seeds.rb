@@ -17,12 +17,18 @@ require 'faker'
 User.destroy_all
 Kitchen.destroy_all
 
-kitchen_list = ["Cuisine avec grand plan de travail", "Cuisine italienne pour pizza", "Location avec cours", "Cuisine du monde", "Grande cuisine familiale"]
+kitchen_description = ["bel espace pour cuisiner en famille ou entre amis. De nombreux équipements à disposition et possibilité de profiter de la terrasse.",
+  "grande cuisine moderne avec équiments de grande qualité. Espace fermé pour cuisiner en toute intimité.",
+  "cuisine en bois et marbre pour cusiner dans une ambiance cosy. Possibilité d'utiliser la vaisselle ainsi que les nombreux ustensiels.",
+  "cuisine ouverte sur un grand salon. Les équipements sont neufs (cuisine refaîte il y a moins d'un an) et de nombreux ustensiles de grande qualité à disposition tel qu'un thermomix."]
+kitchen_list = ["Cuisine moderne", "cuisine dans le jardin", "cuisine d'été", "Cuisine italienne pour pizza", ]
+
 city_list = ["Paris 11ème", "Saint-Denis", "Puteaux", "Paris 12ème", "paris 15ème" ]
-photo_list = ["https://101recycledcrafts.com/wp-content/uploads/2016/09/american-style-kitchen-decorations-9.jpg",
-  "https://www.oppeinhome.com/uploads/20190408/Modern-Open-White-Lacquer-Kitchen-Cabinet-OP15-L28-north-Europe.jpg",
-    "https://www.oppeinhome.com/uploads/20190408/Shaker-Style-U-Shaped-Navy-Blue-Kitchen-OP18-L03-country-style.jpg",
-    "https://media01.living4media.com/largepreviews/MzUyODg3NTA4/11383468-Open-plan-American-style-kitchen-with-black-worksurface-and-breakfast-bar-with-bar-stools.jpg"]
+photo_list = ["https://www.oppeinhome.com/uploads/20190408/Modern-Open-White-Lacquer-Kitchen-Cabinet-OP15-L28-north-Europe.jpg",
+    "https://static.cotemaison.fr/medias_11943/w_1500,h_1500,c_crop,x_63,y_0/w_600,h_600,c_fill,g_north/v1583789155/tendance-outdoor-avec-une-cuisine-a-lesprit-naturel_6115088.jpg",
+    "https://homeardenne.com/wp-content/uploads/2020/08/cuisine-exterieure-amenagement-1024x768.jpg",
+    "https://images.unsplash.com/photo-1564936281403-f92f66f89ee0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=4193&q=80",
+  ]
 i = 0
 
 puts "Creating users"
@@ -38,7 +44,7 @@ photo_list.each do |photo|
   equipments: Faker::Appliance.equipment,
   size: Faker::Number.number(digits: 2),
   availability: true,
-  description: "Cuisine avec espace de travail. Parfait pour toute les recettes demandant beaucoup d'espace. Cette cuisine vous permet de cuisiner à 2 ou 3 maximum",
+  description: kitchen_description[i],
   user: [user1, user2].sample)
   kitchen.picture.attach(io: photo, filename: "kitchen photo", content_type: "images/jpg")
   kitchen.save!
