@@ -51,6 +51,22 @@ photo_list.each do |photo|
   i += 1
 end
 
+i = 0
+photo_list.each do |photo|
+ photo = URI.open(photo)
+ kitchen = Kitchen.new(name: kitchen_list[i],
+  location: city_list[i],
+  price: Faker::Number.number(digits: 2),
+  equipments: Faker::Appliance.equipment,
+  size: Faker::Number.number(digits: 2),
+  availability: true,
+  description: kitchen_description[i],
+  user: [user1, user2].sample)
+  kitchen.picture.attach(io: photo, filename: "kitchen photo", content_type: "images/jpg")
+  kitchen.save!
+  i += 1
+end
+
 
 
 
